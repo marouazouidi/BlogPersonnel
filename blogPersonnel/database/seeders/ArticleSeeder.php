@@ -17,9 +17,9 @@ class ArticleSeeder extends Seeder
         Articles::create([
             'title' => Str::random(10),
             'content' => Str::random(50),
-            'status' => 'draft',
+            'status' => 'published',
             'user_id' => Str::random(1),
-            'categorie_id' => Str::random(1),
+            'category_id' => Str::random(1),
         ]);
     }
 }

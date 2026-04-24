@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articles;
+use App\Models\Categories;
 
 class ArticleController extends Controller
 {
@@ -12,6 +13,16 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     { 
+        $categories =Categories::all();
+        
+        $articles = Articles::with('categories')
+                    ->where('status', 'published');
+        
+        if ($request->has('categories') && !empty($request->categories)) {
+            $articles->whereIn('category_id', $request->categories);
+        }
+        $articles = $articles->get();
+        return view('articles.index', compact('articles', 'categories'));
     }
 
     /**
@@ -19,7 +30,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categories::all();
+        return view('articles.create', compact('categories'));
     }
 
     /**
