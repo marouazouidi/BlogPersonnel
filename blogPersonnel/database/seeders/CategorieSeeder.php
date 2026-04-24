@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\Categories;
+use App\Models\Category;
 
 class CategorieSeeder extends Seeder
 {
@@ -14,8 +15,6 @@ class CategorieSeeder extends Seeder
      */
     public function run(): void
     {
-        Categories::create([
-            'name' => Str::random(10),
-        ]);
+        Category::factory(5)->create();
     }
 }

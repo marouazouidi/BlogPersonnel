@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-use App\Models\Articles;
+use App\Models\Article;
 
 class ArticleSeeder extends Seeder
 {
@@ -14,12 +14,6 @@ class ArticleSeeder extends Seeder
      */
     public function run(): void
     {
-        Articles::create([
-            'title' => Str::random(10),
-            'content' => Str::random(50),
-            'status' => 'published',
-            'user_id' => Str::random(1),
-            'category_id' => Str::random(1),
-        ]);
+        Article::factory(10)->create();
     }
 }
