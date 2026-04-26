@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Articles extends Model
+class Article extends Model
 {
     /** @use HasFactory<\Database\Factories\ArticlesFactory> */
     use HasFactory;
@@ -23,8 +24,8 @@ class Articles extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 }
